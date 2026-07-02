@@ -16,11 +16,27 @@
                 <img src="{{ url_for('static', filename='img/heineken_header.png') }}" alt="Logo">
             </div>
         </div>
-        <div class="content qrfoto-content">
-            <h1>QR Foto</h1>
+        <div class="content">
+            <h1 class="tittle">Sua foto está pronta</h1>
+            <div id="photo-placeholder" class="result-photo photo-placeholder"></div>
+            <img id="result-photo" class="result-photo" alt="Foto capturada" hidden>
+
+            <div class="description">
+                <h2>Escaneie o QR CODE</h2>
+                <h2>para baixar sua foto</h2>
+            </div>
+
+            <div class="qr-code">
+                <canvas id="qr-code-canvas"></canvas>
+            </div>
+
+            <a class="glass-button" id="end-button" href="{{ url_for('index') }}">Finalizar</a>
+
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/qrfoto.js') }}"></script>
 </body>
 
 </html>

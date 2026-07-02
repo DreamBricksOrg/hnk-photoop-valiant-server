@@ -29,7 +29,18 @@
             </div>
         </div>
     </div>
+
+    <div id="processing-overlay" class="processing-overlay" hidden>
+        <div class="spinner"></div>
+        <p id="processing-status" class="processing-status">Enviando imagem...</p>
+        <div id="processing-error" class="processing-error" hidden>
+            <p id="processing-error-message"></p>
+            <a class="glass-button" id="retry-button">Tentar novamente</a>
+        </div>
+    </div>
+
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/image-generator.js') }}"></script>
     <script src="{{ url_for('static', filename='js/resultado.js') }}"></script>
 </body>
 

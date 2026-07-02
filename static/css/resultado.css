@@ -40,3 +40,58 @@
 #yes-button {
     padding: 2rem 6rem;
 }
+
+.processing-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 10;
+}
+
+.processing-overlay[hidden] {
+    display: none;
+}
+
+.spinner {
+    width: 80px;
+    height: 80px;
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    border-top-color: rgb(80, 220, 130);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.processing-status {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.processing-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.processing-error[hidden] {
+    display: none;
+}
+
+.processing-error p {
+    color: rgb(255, 120, 120);
+    font-size: 1.8rem;
+    text-align: center;
+    max-width: 80%;
+}

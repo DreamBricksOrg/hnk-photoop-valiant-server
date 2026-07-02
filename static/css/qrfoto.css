@@ -1,10 +1,52 @@
-.qrfoto-content {
-    flex: 1;
-    width: 100%;
+.content {
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.tittle {
+    text-align: center;
+    font-size: 6rem;
+    color: white;
+}
+
+.description {
+    text-align: center;
+    font-size: 2.2rem;
+    color: white;
+}
+
+.result-photo {
+    width: 80%;
+    max-width: 540px;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border: 20px solid rgb(6, 53, 0);
+    margin-top: 30px;
+    filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.25)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.25));
+}
+
+.photo-placeholder {
+    background-color: rgba(6, 53, 0, 0.9);
+}
+
+.qr-code{
+    width: 50%;
+    aspect-ratio: 4/4;
+    background-color: rgba(6, 53, 0, 0.9);
+    display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    text-align: center;
+}
+
+.qr-code canvas {
+    width: 80% !important;
+    height: 80% !important;
+}
+
+.glass-button {
+    padding: 2rem 20rem;
 }
