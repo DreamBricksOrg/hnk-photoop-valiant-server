@@ -16,11 +16,31 @@
                 <img src="{{ url_for('static', filename='img/heineken_header.png') }}" alt="Logo">
             </div>
         </div>
-        <div class="content posicione-content">
-            <h1>Posicione-se</h1>
+        <div class="content">
+            
+            <h1 class="tittle">Posicione-se</h1>
+
+            <div class="camera-container">
+                <video id="camera-stream" autoplay playsinline></video>
+                <canvas id="photo-canvas"></canvas>
+            </div>
+
+            <div class="description">
+                <h2>Enquadre-se na área indicada</h2>
+            </div>
+
+            <div class="capture-button">
+                <button class="glass-button" id="capture-button">Capturar foto</button>
+            </div>
+            
+            <a href="{{ url_for('index') }}"><h2 class="button-cancel">Cancelar</h2></a>
+
         </div>
-    </div>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/posicione.js') }}"></script>
 </body>
 
 </html>

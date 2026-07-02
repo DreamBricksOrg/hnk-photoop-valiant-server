@@ -8,3 +8,12 @@
     color: #fff;
     text-align: center;
 }
+
+.result-photo {
+    width: 80%;
+    max-width: 720px;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border: 20px solid rgb(6, 53, 0);
+    margin-top: 30px;
+}

@@ -1,10 +1,54 @@
-.posicione-content {
-    flex: 1;
-    width: 100%;
+.content {
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    color: #fff;
+    align-items: center;
+    gap: 50px;
+}
+
+.tittle {
     text-align: center;
+    font-size: 6rem;
+    color: white;
+}
+
+.camera-container {
+    width: 80%;
+    max-width: 720px;
+    aspect-ratio: 9 / 16;
+    border: 20px solid rgb(6, 53, 0);
+    overflow: hidden;
+    position: relative;
+}
+
+.camera-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.camera-container canvas {
+    display: none;
+}
+
+
+.description {
+    text-align: center;
+    font-size: 1.8rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 100px;
+}
+
+.button-cancel {
+    display: inline-block;
+    color: white;
+    font-size: 2.5rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.glass-button {
+    padding: 1.5rem 20rem;
 }
