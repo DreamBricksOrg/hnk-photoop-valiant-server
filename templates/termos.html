@@ -11,16 +11,80 @@
 
 <body>
     <div class="container">
+        <input type="checkbox" id="terms-modal-toggle" class="modal-toggle">
+        <input type="checkbox" id="warning-modal-toggle" class="modal-toggle">
         <div class="header">
             <div class="logo">
                 <img src="{{ url_for('static', filename='img/heineken_header.png') }}" alt="Logo">
             </div>
         </div>
-        <div class="content termos-content">
-            <h1>Termos</h1>
+        <div class="content">
+            <h1 class="tittle">Antes de começar</h1>
+            <div class="description">
+                <h2>Para participar da ativação</h2>
+                <h2>é necessário confirmar sua idade</h2>
+                <h2>e aceitar os termos de participação</h2>
+            </div>
+            <label class="button-terms" for="terms-modal-toggle">
+                <h2>Ver termos</h2>
+            </label>
+            <div class="terms-check-container">
+                <div class="age-confirmation toggle-row">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="age-check" name="age-check" class="toggle-input">
+                        <img class="toggle-img toggle-img-off" src="{{ url_for('static', filename='img/BOTAO-01.png') }}" alt="">
+                        <img class="toggle-img toggle-img-on" src="{{ url_for('static', filename='img/BOTAO-02.png') }}" alt="">
+                    </label>
+                    <label for="age-check">Declaro que tenho 18 anos ou mais</label>
+                </div>
+                <div class="terms-confirmation toggle-row">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="terms-check" name="terms-check" class="toggle-input">
+                        <img class="toggle-img toggle-img-off" src="{{ url_for('static', filename='img/BOTAO-01.png') }}" alt="">
+                        <img class="toggle-img toggle-img-on" src="{{ url_for('static', filename='img/BOTAO-02.png') }}" alt="">
+                    </label>
+                    <label for="terms-check">Li e aceito os termos de participação</label>
+                </div>
+            </div>
+        </div>
+        <div class="continue-button">
+            <a class="glass-button" id="continue-link" href="{{ url_for('posicione') }}">Continuar</a>
+        </div>
+        <div class="modal-backdrop terms-modal">
+            <label class="modal-overlay" for="terms-modal-toggle"></label>
+            <div class="modal-box">
+                <label class="modal-close" for="terms-modal-toggle">&times;</label>
+                <h2>Termos de participação</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                    officia deserunt mollit anim id est laborum.
+                </p>
+                <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                    architecto beatae vitae dicta sunt explicabo.
+                </p>
+            </div>
+        </div>
+        <div class="modal-backdrop warning-modal">
+            <label class="modal-overlay" for="warning-modal-toggle"></label>
+            <div class="modal-box modal-box-warning">
+                <label class="modal-close" for="warning-modal-toggle">&times;</label>
+                <h2>Atenção</h2>
+                <p>
+                    Você deve confirmar sua idade e aceitar os termos de participação antes de continuar.
+                </p>
+            </div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/termos.js') }}"></script>
 </body>
 
 </html>
