@@ -2,15 +2,24 @@ const video = document.getElementById('camera-stream');
 const canvas = document.getElementById('photo-canvas');
 const captureButton = document.getElementById('capture-button');
 
+captureButton.disabled = true;
+
 async function startCamera() {
     const stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: { ideal: 'environment' } },
         audio: false
     });
     video.srcObject = stream;
+    video.addEventListener('loadedmetadata', () => {
+        captureButton.disabled = false;
+    });
 }
 
 function capturePhoto() {
+    if (!video.videoWidth || !video.videoHeight) {
+        return;
+    }
+
     const targetRatio = 9 / 16;
     const videoWidth = video.videoWidth;
     const videoHeight = video.videoHeight;

@@ -16,9 +16,17 @@
                 <img src="{{ url_for('static', filename='img/heineken_header.png') }}" alt="Logo">
             </div>
         </div>
-        <div class="content resultado-content">
-            <h1>Resultado</h1>
-            <img id="result-photo" class="result-photo" alt="Foto capturada">
+        <div class="content">
+            <h1 class="tittle">Sua foto ficou assim:</h1>
+            <div id="photo-placeholder" class="result-photo photo-placeholder"></div>
+            <img id="result-photo" class="result-photo" alt="Foto capturada" hidden>
+
+            <h1 class="tittle">Você gostou?</h1>
+
+            <div class="buttons">
+                <a class="glass-button" id="no-button" href="{{ url_for('posicione') }}">Não, tire outra</a>
+                <a class="glass-button" id="yes-button">Sim</a>
+            </div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
