@@ -1,2 +1,5 @@
 Flask
 python-dotenv
+logcenter-sdk
+starlette
+uvicorn

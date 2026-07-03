@@ -71,7 +71,7 @@ async function processImage() {
     });
 
     sessionStorage.setItem('processedImageUrl', imageUrl);
-    window.location.href = '/qrfoto';
+    window.location.href = `/qrfoto?imageUrl=${encodeURIComponent(imageUrl)}`;
 }
 
 async function startProcessing(isAutoRetry = false) {
