@@ -1,22 +1,22 @@
 .content{
-    margin-top: 50px;
-    margin-bottom: 200px;
+    margin-top: 3rem;
+    margin-bottom: 28rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap:100px;
+    gap: 10rem;
 }
 
 .tittle {
     text-align: center;
-    font-size: 6rem;
+    font-size: 8rem;
     color: white;
 }
 
 .description {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -24,7 +24,7 @@
 .button-terms{
     display: inline-block;
     color: white;
-    font-size: 1.8rem;
+    font-size: 2rem;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -34,16 +34,16 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 80px;
+    gap: 8rem;
     color: white;
 }
 
 .age-confirmation {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .terms-confirmation {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .toggle-row {
@@ -55,7 +55,7 @@
 .toggle-switch {
     position: relative;
     display: inline-block;
-    width: 280px;
+    width: 18rem;
     aspect-ratio: 233 / 127;
     flex-shrink: 0;
     cursor: pointer;
