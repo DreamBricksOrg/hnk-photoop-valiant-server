@@ -10,6 +10,15 @@ load_dotenv()
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev")
 
+_debug = os.getenv("FLASK_DEBUG", "true").lower() == "true"
+
+# Com o reloader do Flask (debug=True) o processo "watcher" também importa
+# este módulo; só inicia a thread de flush no processo que de fato serve
+# requisições (WERKZEUG_RUN_MAIN) para não duplicá-la. Sob gunicorn ou
+# debug=False não há reloader, então inicia direto.
+if not _debug or os.getenv("WERKZEUG_RUN_MAIN") == "true":
+    start_background_flush()
+
 
 @app.route("/")
 def index():
@@ -49,13 +58,8 @@ def resultado():
 
 
 if __name__ == "__main__":
-    debug = os.getenv("FLASK_DEBUG", "true").lower() == "true"
-
-    if not debug or os.getenv("WERKZEUG_RUN_MAIN") == "true":
-        start_background_flush()
-
     app.run(
         host=os.getenv("HOST", "127.0.0.1"),
         port=int(os.getenv("PORT", 5000)),
-        debug=debug,
+        debug=_debug,
     )

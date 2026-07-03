@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    ports:
+      - "${PORT:-5000}:${PORT:-5000}"
+    env_file:
+      - .env
+    volumes:
+      - ./.logcenter:/app/.logcenter
+    restart: unless-stopped
