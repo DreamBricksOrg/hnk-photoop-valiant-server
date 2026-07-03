@@ -1,3 +1,4 @@
+import mimetypes
 import os
 
 from dotenv import load_dotenv
@@ -6,6 +7,12 @@ from flask import Flask, render_template, request
 from log_sender import log, start_background_flush
 
 load_dotenv()
+
+# O sistema operacional pode não ter .otf mapeado (ex.: imagem Debian do
+# Docker), fazendo o Flask servir a fonte como application/octet-stream —
+# alguns navegadores recusam @font-face nesse caso. Registrar explicitamente
+# garante o mesmo Content-Type em qualquer ambiente.
+mimetypes.add_type("font/otf", ".otf")
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev")
