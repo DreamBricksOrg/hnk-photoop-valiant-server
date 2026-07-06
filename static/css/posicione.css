@@ -50,3 +50,30 @@
 .glass-button {
     padding: 1.5rem 20rem;
 }
+
+@media (max-width: 768px) {
+    .content {
+        gap: 1.5rem;
+    }
+
+    .tittle {
+        font-size: 2.6rem;
+    }
+
+    .camera-container {
+        width: min(60vw, 300px);
+        border-width: 8px;
+    }
+
+    .description {
+        font-size: 1.2rem;
+    }
+
+    .capture-button .glass-button {
+        padding: 1.2rem 5rem;
+    }
+
+    .button-cancel {
+        font-size: 1.4rem;
+    }
+}

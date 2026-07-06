@@ -177,3 +177,64 @@
     transform: translate(-50%, -50%);
     margin: 0;
 }
+
+@media (max-width: 768px) {
+    .content {
+        margin-bottom: 3rem;
+        gap: 3rem;
+        padding: 0 1.5rem;
+    }
+
+    .tittle {
+        font-size: 2.6rem;
+    }
+
+    .description {
+        font-size: 1.2rem;
+    }
+
+    .button-terms {
+        font-size: 1.2rem;
+    }
+
+    .terms-check-container {
+        gap: 2.5rem;
+    }
+
+    .age-confirmation,
+    .terms-confirmation {
+        font-size: 1.2rem;
+    }
+
+    .toggle-row {
+        gap: 15px;
+    }
+
+    .toggle-switch {
+        width: 6rem;
+    }
+
+    .glass-button {
+        padding: 1.2rem 4rem;
+    }
+
+    .modal-box {
+        padding: 30px 20px;
+        border-radius: 16px;
+    }
+
+    .modal-box h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .modal-box p {
+        font-size: 1rem;
+    }
+
+    .modal-close {
+        top: 12px;
+        right: 18px;
+        font-size: 2rem;
+    }
+}

@@ -48,3 +48,31 @@
 .glass-button {
     padding: 1.5rem 20rem;
 }
+
+@media (max-width: 768px) {
+    .content {
+        gap: 1rem;
+        padding: 0 1.5rem;
+    }
+
+    .tittle {
+        font-size: 2.4rem;
+    }
+
+    .description {
+        font-size: 1.1rem;
+    }
+
+    .result-photo {
+        width: min(45vw, 220px);
+        border-width: 8px;
+    }
+
+    .qr-code {
+        width: min(40vw, 180px);
+    }
+
+    .glass-button {
+        padding: 1rem 4rem;
+    }
+}

@@ -93,3 +93,40 @@
     text-align: center;
     max-width: 80%;
 }
+
+@media (max-width: 768px) {
+    .content {
+        gap: 1.5rem;
+    }
+
+    .tittle {
+        font-size: 2.6rem;
+    }
+
+    .result-photo {
+        width: min(55vw, 280px);
+        border-width: 8px;
+    }
+
+    .buttons {
+        gap: 2rem;
+    }
+
+    #yes-button {
+        padding: 1.2rem 3rem;
+    }
+
+    .spinner {
+        width: 56px;
+        height: 56px;
+        border-width: 6px;
+    }
+
+    .processing-status {
+        font-size: 1.3rem;
+    }
+
+    .processing-error p {
+        font-size: 1.2rem;
+    }
+}

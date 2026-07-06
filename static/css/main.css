@@ -104,3 +104,31 @@ body {
     pointer-events: none;
 }
 
+@media (max-width: 768px) {
+    .container {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding-bottom: 2rem;
+    }
+
+    .header {
+        height: 120px;
+    }
+
+    .logo {
+        margin-left: 1.5rem;
+    }
+
+    .logo img {
+        max-height: 100%;
+        max-width: 55vw;
+        object-fit: contain;
+    }
+
+    .glass-button {
+        font-size: 1.4rem;
+        padding: 1rem 2.5rem;
+    }
+}
+
