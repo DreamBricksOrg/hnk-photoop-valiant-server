@@ -52,6 +52,13 @@ def qrfoto():
     return render_template("qrfoto.html")
 
 
+@app.route("/foto")
+def foto():
+    image_url = request.args.get("imageUrl", "")
+    log("SERVIDOR_FOTO", tags=["servidor", "foto"], data={"image_url": image_url})
+    return render_template("foto.html")
+
+
 @app.route("/obrigado")
 def obrigado():
     log("SERVIDOR_OBRIGADO", tags=["servidor"])
