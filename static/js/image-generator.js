@@ -1,12 +1,12 @@
 /**
  * image-generator.js
- * Upload de imagem -> processamento via ComfyUI (workflow "change_background_v01_api.json")
+ * Upload de imagem -> processamento via ComfyUI (workflow "change_background_v02.json")
  * -> polling de status -> retorno da URL da imagem final.
  */
 (function (global) {
   "use strict";
 
-  const WORKFLOW_NAME = "change_background_v01_api.json";
+  const WORKFLOW_NAME = "change_background_v02.json";
 
   let config = {
     baseApi: "https://dbdemo.dbpe.com.br/api",
