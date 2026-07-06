@@ -1,5 +1,4 @@
 .middle{
-    margin-top: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,13 +8,13 @@
 
 .tittle {
     text-align: center;
-    font-size: 10rem;
+    font-size: 8rem;
     color: white;
 }
 
 .img-hero {
     width: 70%;
-    margin: 10rem 0;
+    margin: 4rem 0;
     filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.25)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.25));
 }
 
@@ -27,7 +26,7 @@
 }
 
 .button-start {
-    margin-top: 8rem;
+    margin-top: 6rem;
     display: flex;
     justify-content: center;
     width: 100%;

@@ -1,25 +1,23 @@
 .content {
-    margin-top: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 80px;
+    gap: 3rem;
 }
 
 .tittle {
     text-align: center;
-    font-size: 8rem;
+    font-size: 5rem;
     color: white;
 }
 
 .result-photo {
     width: 80%;
-    max-width: 720px;
+    max-width: 560px;
     aspect-ratio: 9 / 16;
     object-fit: cover;
     border: 20px solid rgb(6, 53, 0);
-    margin-top: 30px;
     filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.25)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.25));
 }
 
@@ -30,7 +28,7 @@
 .buttons {
     display: flex;
     flex-direction: row;
-    gap: 120px;
+    gap: 6rem;
 }
 
 #no-button {

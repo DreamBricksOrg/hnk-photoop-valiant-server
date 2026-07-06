@@ -1,16 +1,15 @@
 .content{
-    margin-top: 3rem;
-    margin-bottom: 28rem;
+    margin-bottom: 10rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10rem;
+    gap: 8rem;
 }
 
 .tittle {
     text-align: center;
-    font-size: 8rem;
+    font-size: 6rem;
     color: white;
 }
 
@@ -34,16 +33,16 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 8rem;
+    gap: 7rem;
     color: white;
 }
 
 .age-confirmation {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .terms-confirmation {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .toggle-row {
@@ -55,7 +54,7 @@
 .toggle-switch {
     position: relative;
     display: inline-block;
-    width: 18rem;
+    width: 12rem;
     aspect-ratio: 233 / 127;
     flex-shrink: 0;
     cursor: pointer;
