@@ -15,7 +15,7 @@ if (processedImageUrl) {
     });
     resultPhoto.src = processedImageUrl;
 
-    const fotoPageUrl = `https://go.dbpe.com.br/hnk/foto?imageUrl=${encodeURIComponent(processedImageUrl)}`;
+    const fotoPageUrl = `https://go.dbpe.com.br/hnk?imageUrl=${encodeURIComponent(processedImageUrl)}`;
 
     QRCode.toCanvas(qrCodeCanvas, fotoPageUrl, {
         margin: 0,
