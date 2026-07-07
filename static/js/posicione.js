@@ -15,10 +15,30 @@ async function startCamera() {
     });
 }
 
+function flashScreen() {
+    const flash = document.createElement('div');
+    flash.style.position = 'fixed';
+    flash.style.inset = '0';
+    flash.style.backgroundColor = 'rgb(255, 248, 230)';
+    flash.style.zIndex = '9999';
+    flash.style.opacity = '1';
+    flash.style.pointerEvents = 'none';
+    flash.style.transition = 'opacity 0.4s ease-out';
+    document.body.appendChild(flash);
+
+    setTimeout(() => {
+        flash.style.opacity = '0';
+    }, 400);
+
+    setTimeout(() => flash.remove(), 800);
+}
+
 function capturePhoto() {
     if (!video.videoWidth || !video.videoHeight) {
         return;
     }
+
+    flashScreen();
 
     const targetRatio = 9 / 16;
     const videoWidth = video.videoWidth;
@@ -44,7 +64,9 @@ function capturePhoto() {
     const photoDataUrl = canvas.toDataURL('image/jpeg', 0.9);
     sessionStorage.setItem('capturedPhoto', photoDataUrl);
 
-    window.location.href = '/resultado';
+    setTimeout(() => {
+        window.location.href = '/resultado';
+    }, 500);
 }
 
 captureButton.addEventListener('click', capturePhoto);

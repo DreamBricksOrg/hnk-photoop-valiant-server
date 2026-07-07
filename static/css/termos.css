@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "Heineken Serif low";
+    src: url("../fonts/heineken-serif.ttf") format("true-type");
+    font-weight: lighter;
+}
+
 .content{
     margin-bottom: 10rem;
     display: flex;
@@ -16,6 +22,7 @@
 .description {
     text-align: center;
     font-size: 2rem;
+    font-family: 'Heineken Serif low';
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -26,6 +33,7 @@
     font-size: 2rem;
     text-decoration: underline;
     cursor: pointer;
+    font-family: 'Heineken Serif low';
 }
 
 .terms-check-container {
