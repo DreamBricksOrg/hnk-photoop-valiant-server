@@ -15,7 +15,17 @@ if (processedImageUrl) {
     });
     resultPhoto.src = processedImageUrl;
 
-    const fotoPageUrl = `https://go.dbpe.com.br/hnk?imageUrl=${encodeURIComponent(processedImageUrl)}`;
+    // A URL completa da imagem é longa (.../image/output/{id}/{arquivo}.png)
+    // e deixa o QR code denso/difícil de ler. Só o id da pasta é enviado; a
+    // tela /foto busca a URL completa via GET /api/image/{id}.
+    const idMatch = processedImageUrl.match(/\/output\/([^/]+)\//);
+    const imageId = idMatch ? idMatch[1] : '';
+
+    if (!imageId) {
+        console.warn('Não foi possível extrair o id da imagem de', processedImageUrl);
+    }
+
+    const fotoPageUrl = `https://go.dbpe.com.br/hnk?id=${encodeURIComponent(imageId)}`;
 
     QRCode.toCanvas(qrCodeCanvas, fotoPageUrl, {
         margin: 0,

@@ -54,8 +54,8 @@ def qrfoto():
 
 @app.route("/foto")
 def foto():
-    image_url = request.args.get("imageUrl", "")
-    log("SERVIDOR_FOTO", tags=["servidor", "foto"], data={"image_url": image_url})
+    image_id = request.args.get("id", "")
+    log("SERVIDOR_FOTO", tags=["servidor", "foto"], data={"image_id": image_id})
     return render_template("foto.html")
 
 

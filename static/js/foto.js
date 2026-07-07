@@ -3,23 +3,49 @@ const photoPlaceholder = document.getElementById('photo-placeholder');
 const downloadButton = document.getElementById('download-button');
 const shareButton = document.getElementById('share-button');
 
-const imageUrl = new URLSearchParams(window.location.search).get('imageUrl');
-
+const API_BASE = 'https://dbdemo.dbpe.com.br';
 const FILE_NAME = 'foto_heineken.png';
 
-if (imageUrl) {
-    resultPhoto.addEventListener('load', () => {
-        photoPlaceholder.hidden = true;
-        resultPhoto.hidden = false;
-    });
-    resultPhoto.addEventListener('error', () => {
-        console.error('Falha ao carregar a foto.');
-    });
-    resultPhoto.src = imageUrl;
-} else {
-    console.warn('Nenhuma imagem informada na URL.');
-    downloadButton.disabled = true;
-    shareButton.disabled = true;
+const imageId = new URLSearchParams(window.location.search).get('id');
+
+let imageUrl = null;
+
+downloadButton.disabled = true;
+shareButton.disabled = true;
+
+async function resolveImageUrl() {
+    if (!imageId) {
+        console.warn('Nenhum id de imagem informado na URL.');
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_BASE}/api/image/${encodeURIComponent(imageId)}`);
+        if (!response.ok) {
+            throw new Error(`Falha ao buscar imagem (HTTP ${response.status})`);
+        }
+
+        const data = await response.json();
+        if (!data.image_url) {
+            throw new Error('Resposta sem image_url.');
+        }
+
+        imageUrl = data.image_url.startsWith('http') ? data.image_url : `${API_BASE}${data.image_url}`;
+
+        resultPhoto.addEventListener('load', () => {
+            photoPlaceholder.hidden = true;
+            resultPhoto.hidden = false;
+        });
+        resultPhoto.addEventListener('error', () => {
+            console.error('Falha ao carregar a foto.');
+        });
+        resultPhoto.src = imageUrl;
+
+        downloadButton.disabled = false;
+        shareButton.disabled = false;
+    } catch (err) {
+        console.error('Erro ao buscar a foto:', err);
+    }
 }
 
 async function fetchImageBlob() {
@@ -78,3 +104,5 @@ shareButton.addEventListener('click', async () => {
         console.warn('Compartilhamento não suportado neste navegador.');
     }
 });
+
+resolveImageUrl();
