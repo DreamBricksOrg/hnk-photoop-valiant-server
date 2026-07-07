@@ -51,6 +51,47 @@
     padding: 1.5rem 20rem;
 }
 
+.countdown-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    pointer-events: none;
+}
+
+.countdown-overlay[hidden] {
+    display: none;
+}
+
+.countdown-number {
+    font-size: 14rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    animation: countdown-pulse 1s ease-out;
+}
+
+@keyframes countdown-pulse {
+    from {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .countdown-number {
+        font-size: 7rem;
+    }
+}
+
 @media (max-width: 768px) {
     .content {
         gap: 1.5rem;

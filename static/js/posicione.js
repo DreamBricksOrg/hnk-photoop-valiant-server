@@ -1,6 +1,8 @@
 const video = document.getElementById('camera-stream');
 const canvas = document.getElementById('photo-canvas');
 const captureButton = document.getElementById('capture-button');
+const countdownOverlay = document.getElementById('countdown-overlay');
+const countdownNumber = document.getElementById('countdown-number');
 
 captureButton.disabled = true;
 
@@ -15,30 +17,58 @@ async function startCamera() {
     });
 }
 
-function flashScreen() {
-    const flash = document.createElement('div');
-    flash.style.position = 'fixed';
-    flash.style.inset = '0';
-    flash.style.backgroundColor = 'rgb(255, 248, 230)';
-    flash.style.zIndex = '9999';
-    flash.style.opacity = '1';
-    flash.style.pointerEvents = 'none';
-    flash.style.transition = 'opacity 0.4s ease-out';
-    document.body.appendChild(flash);
+function runCountdown(seconds) {
+    return new Promise((resolve) => {
+        let remaining = seconds;
+        countdownNumber.textContent = remaining;
+        countdownOverlay.hidden = false;
 
-    setTimeout(() => {
-        flash.style.opacity = '0';
-    }, 400);
+        const interval = setInterval(() => {
+            remaining -= 1;
 
-    setTimeout(() => flash.remove(), 800);
+            if (remaining <= 0) {
+                clearInterval(interval);
+                countdownOverlay.hidden = true;
+                resolve();
+                return;
+            }
+
+            // Reinicia a animação de pulso a cada número.
+            countdownNumber.style.animation = 'none';
+            void countdownNumber.offsetWidth;
+            countdownNumber.style.animation = '';
+            countdownNumber.textContent = remaining;
+        }, 1000);
+    });
 }
 
-function capturePhoto() {
+function flashScreen(durationMs, fadeMs) {
+    return new Promise((resolve) => {
+        const flash = document.createElement('div');
+        flash.style.position = 'fixed';
+        flash.style.inset = '0';
+        flash.style.backgroundColor = 'rgb(255, 248, 230)';
+        flash.style.zIndex = '9999';
+        flash.style.opacity = '1';
+        flash.style.pointerEvents = 'none';
+        flash.style.transition = `opacity ${fadeMs}ms ease-out`;
+        document.body.appendChild(flash);
+
+        setTimeout(() => {
+            flash.style.opacity = '0';
+        }, durationMs - fadeMs);
+
+        setTimeout(() => {
+            flash.remove();
+            resolve();
+        }, durationMs);
+    });
+}
+
+function takePhoto() {
     if (!video.videoWidth || !video.videoHeight) {
         return;
     }
-
-    flashScreen();
 
     const targetRatio = 9 / 16;
     const videoWidth = video.videoWidth;
@@ -63,10 +93,16 @@ function capturePhoto() {
 
     const photoDataUrl = canvas.toDataURL('image/jpeg', 0.9);
     sessionStorage.setItem('capturedPhoto', photoDataUrl);
+}
 
-    setTimeout(() => {
-        window.location.href = '/resultado';
-    }, 500);
+async function capturePhoto() {
+    captureButton.disabled = true;
+
+    await runCountdown(5);
+    takePhoto();
+    await flashScreen(1500, 300);
+
+    window.location.href = '/resultado';
 }
 
 captureButton.addEventListener('click', capturePhoto);

@@ -32,12 +32,14 @@
             <div class="capture-button">
                 <button class="glass-button" id="capture-button">Capturar foto</button>
             </div>
-            
+
             <a href="{{ url_for('index') }}"><h2 class="button-cancel">Cancelar</h2></a>
 
         </div>
 
-
+        <div id="countdown-overlay" class="countdown-overlay" hidden>
+            <span id="countdown-number" class="countdown-number"></span>
+        </div>
 
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>
         <script src="{{ url_for('static', filename='js/posicione.js') }}"></script>
