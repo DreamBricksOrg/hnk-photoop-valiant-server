@@ -42,7 +42,7 @@ function runCountdown(seconds) {
     });
 }
 
-function flashScreen(durationMs, fadeMs) {
+function flashScreen(durationMs, fadeMs, onFlashVisible) {
     return new Promise((resolve) => {
         const flash = document.createElement('div');
         flash.style.position = 'fixed';
@@ -53,6 +53,14 @@ function flashScreen(durationMs, fadeMs) {
         flash.style.pointerEvents = 'none';
         flash.style.transition = `opacity ${fadeMs}ms ease-out`;
         document.body.appendChild(flash);
+
+        // Só captura depois que o navegador de fato pintou o flash na tela,
+        // garantindo que a foto seja tirada com o flash já visível.
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                onFlashVisible && onFlashVisible();
+            });
+        });
 
         setTimeout(() => {
             flash.style.opacity = '0';
@@ -99,8 +107,7 @@ async function capturePhoto() {
     captureButton.disabled = true;
 
     await runCountdown(5);
-    takePhoto();
-    await flashScreen(1500, 300);
+    await flashScreen(1500, 300, takePhoto);
 
     window.location.href = '/resultado';
 }
