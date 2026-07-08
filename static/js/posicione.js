@@ -54,17 +54,19 @@ function flashScreen(durationMs, fadeMs, onFlashVisible) {
         flash.style.transition = `opacity ${fadeMs}ms ease-out`;
         document.body.appendChild(flash);
 
-        // Só captura depois que o navegador de fato pintou o flash na tela,
-        // garantindo que a foto seja tirada com o flash já visível.
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                onFlashVisible && onFlashVisible();
-            });
-        });
+        // Captura no meio do período em que o flash está 100% opaco (antes
+        // de começar a esmaecer), garantindo que o flash esteja bem visível
+        // no momento exato da foto.
+        const opaqueDurationMs = durationMs - fadeMs;
+        const captureAtMs = opaqueDurationMs / 2;
+
+        setTimeout(() => {
+            onFlashVisible && onFlashVisible();
+        }, captureAtMs);
 
         setTimeout(() => {
             flash.style.opacity = '0';
-        }, durationMs - fadeMs);
+        }, opaqueDurationMs);
 
         setTimeout(() => {
             flash.remove();
