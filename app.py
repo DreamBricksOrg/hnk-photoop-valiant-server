@@ -2,7 +2,7 @@ import mimetypes
 import os
 
 from dotenv import load_dotenv
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 
 from log_sender import log, start_background_flush
 
@@ -25,6 +25,17 @@ _debug = os.getenv("FLASK_DEBUG", "true").lower() == "true"
 # debug=False não há reloader, então inicia direto.
 if not _debug or os.getenv("WERKZEUG_RUN_MAIN") == "true":
     start_background_flush()
+
+
+@app.route("/service-worker.js")
+def service_worker():
+    # Precisa ser servido a partir da raiz (não de /static/) para o
+    # service worker ter escopo sobre o site inteiro, não só /static/.
+    return send_from_directory(
+        os.path.join(app.static_folder, "js"),
+        "service-worker.js",
+        mimetype="application/javascript",
+    )
 
 
 @app.route("/")

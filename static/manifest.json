@@ -1,0 +1,22 @@
+{
+    "name": "Photoop Valiant Heineken",
+    "short_name": "Photoop Valiant",
+    "start_url": "/",
+    "scope": "/",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "background_color": "#063500",
+    "theme_color": "#063500",
+    "icons": [
+        {
+            "src": "/static/img/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/img/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
