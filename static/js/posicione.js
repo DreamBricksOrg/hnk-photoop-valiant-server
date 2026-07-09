@@ -8,7 +8,11 @@ captureButton.disabled = true;
 
 async function startCamera() {
     const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: { ideal: 'user' } },
+        video: {
+            facingMode: { ideal: 'user' },
+            width: { exact: 1280 },
+            height: { exact: 720 },
+        },
         audio: false
     });
     video.srcObject = stream;
